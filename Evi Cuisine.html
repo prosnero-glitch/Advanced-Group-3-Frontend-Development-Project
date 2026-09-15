@@ -15,6 +15,17 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="Evicuisinestyle.css" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("evi-theme");
+          var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#home">Skip to content</a>
@@ -38,17 +49,28 @@
           <span class="logo-text">Evi <em>Cuisine</em></span>
         </a>
 
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="primary-menu"
-          aria-label="Open menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+              <path d="M12 3v1.6M12 19.4V21M4.9 4.9l1.1 1.1M18 18l1.1 1.1M3 12h1.6M19.4 12H21M4.9 19.1 6 18M18 6l1.1-1.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16.5 13.5A7 7 0 0 1 10.5 4a7 7 0 1 0 6 9.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="primary-menu"
+            aria-label="Open menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
 
         <ul class="nav-links" id="primary-menu">
           <li><a href="#home">Home</a></li>
@@ -58,6 +80,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <div class="nav-overlay" hidden></div>
     </header>
 
     <main>
@@ -68,7 +91,7 @@
           <p class="eyebrow">Contemporary dining </p>
           <h1>Evi Cuisine</h1>
           <p class="hero-lead">
-            Seasonal plates, fire-cooked technique, and hospitality that follows every order from
+            South-South meals Seasonal plates, fire-cooked technique, and hospitality that follows every order from
             kitchen to table.
           </p>
           <div class="hero-actions">
@@ -87,7 +110,7 @@
             <p class="eyebrow">What we offer</p>
             <h2>About Evi Cuisine</h2>
             <p class="section-intro">
-              Evi Cuisine is a chef-led restaurant built around seasonal produce, precise
+              Evi Cuisine is a South-South-led restaurant built around seasonal produce, precise
               technique, and a guest experience that is as considered as the plate. From tasting
               menus to large-scale catering, every service is tracked, timed, and delivered with
               the same kitchen standard.
@@ -96,14 +119,14 @@
 
           <div class="service-grid">
             <article class="service-card">
-              <h3>À la carte dining</h3>
+              <h3>River dining</h3>
               <p>
                 Lunch and dinner menus that change with the market: wood-fired proteins, composed
                 vegetables, and desserts finished to order.
               </p>
             </article>
             <article class="service-card">
-              <h3>Chef’s tasting</h3>
+              <h3>South tasting</h3>
               <p>
                 A multi-course tasting built around the day’s best produce, with optional wine
                 pairing and dietary accommodations on request.
@@ -146,12 +169,12 @@
             </li>
             <li class="track-step">
               <span class="track-icon" aria-hidden="true">2</span>
-              <h3>Mise en place</h3>
+              <h3>Stop place</h3>
               <p>Stations pull, portion, and fire according to ticket time.</p>
             </li>
             <li class="track-step">
               <span class="track-icon" aria-hidden="true">3</span>
-              <h3>On the pass</h3>
+              <h3>On the pass/Waka </h3>
               <p>Quality check, garnish, and temperature before it leaves.</p>
             </li>
             <li class="track-step">

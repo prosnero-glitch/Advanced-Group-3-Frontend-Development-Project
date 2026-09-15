@@ -12,6 +12,20 @@
   --header-h: 76px;
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-body: "Outfit", system-ui, sans-serif;
+  --surface-card: #ffffff;
+  --surface-contact: #fffaf4;
+}
+
+:root[data-theme="dark"] {
+  --ink: #f4ece2;
+  --ink-soft: #2a1f1b;
+  --cream: #f4ece2;
+  --paper: #17110f;
+  --muted: #c0afa3;
+  --line: rgba(201, 162, 74, 0.36);
+  --surface-card: #241a16;
+  --surface-contact: #211713;
+  --shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
 }
 
 *,
@@ -31,6 +45,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 img {
@@ -111,6 +126,7 @@ textarea {
   top: 0;
   z-index: 50;
   background: rgba(20, 14, 12, 0.92);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(201, 162, 74, 0.18);
 }
@@ -206,6 +222,32 @@ textarea {
   background: var(--cream);
   margin: 6px 0;
   transition: 0.25s ease;
+}
+
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold);
+  background: transparent;
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle .icon-moon,
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: block;
 }
 
 .hero {
@@ -350,7 +392,7 @@ textarea {
   padding: 28px;
   border: 1px solid rgba(20, 14, 12, 0.08);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--surface-card);
   box-shadow: 0 10px 30px rgba(20, 14, 12, 0.04);
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
@@ -504,7 +546,7 @@ textarea {
 }
 
 .contact {
-  background: #fffaf4;
+  background: var(--surface-contact);
 }
 
 .contact-layout {
@@ -545,7 +587,7 @@ textarea {
   gap: 16px;
   padding: 28px;
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--surface-card);
   border: 1px solid rgba(20, 14, 12, 0.08);
   box-shadow: 0 16px 40px rgba(20, 14, 12, 0.06);
 }

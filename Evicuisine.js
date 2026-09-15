@@ -1,11 +1,32 @@
 (function () {
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");
+  const themeToggle = document.querySelector(".theme-toggle");
   const headerLinks = document.querySelectorAll(".nav-links a");
   const sections = document.querySelectorAll("main section[id]");
   const progressFills = document.querySelectorAll(".progress-fill");
   const form = document.getElementById("contact-form");
   const statusEl = document.getElementById("form-status");
+
+  function setTheme(theme) {
+    const isDark = theme === "dark";
+    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to bright mode" : "Switch to dark mode");
+
+    try {
+      localStorage.setItem("evi-theme", isDark ? "dark" : "light");
+    } catch (e) {
+      // Theme still changes when storage is unavailable.
+    }
+  }
+
+  setTheme(document.documentElement.getAttribute("data-theme") || "light");
+
+  themeToggle.addEventListener("click", function () {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    setTheme(currentTheme === "dark" ? "light" : "dark");
+  });
 
   function setMenu(open) {
     navLinks.classList.toggle("open", open);
