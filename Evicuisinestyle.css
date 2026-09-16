@@ -644,8 +644,8 @@ textarea {
 }
 
 .site-footer {
-  background: var(--ink);
-  color: rgba(244, 236, 226, 0.82);
+  background: #140e0c;
+  color: #f4ece2;
   text-align: center;
   padding: 28px 16px;
   border-top: 1px solid var(--line);
